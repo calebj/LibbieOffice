@@ -77,7 +77,7 @@ function download_zip() {
     unzip -oqd "$tmpdir" "$tmpdir/$zip_filename"
     art_dir="$tmpdir/${zip_filename%_full.zip}"
 }
-           
+
 function generate_icon() {
     icon_name=$1
     mode=$2
@@ -164,7 +164,6 @@ function generate_icons() {
         fi
     done
 }
-
 
 function modify_zip() {
     zip="$(readlink -f "$1")"
@@ -349,7 +348,7 @@ function restore_files() {
 
 function verify_exists() {
     if [ ! -e "$2" ] ; then
-        echo "ERROR: The specified $1 ($2) doesn't exist!"
+        echo "${3:-ERROR}: The set $1 ($2) doesn't exist!"
         return 1
     fi
 }
@@ -357,15 +356,16 @@ function verify_exists() {
 function verify_writable() {
     verify_exists "$@" || return $?
     if [ ! -w "$2" ] ; then
-        echo "ERROR: The specified $1 ($2) isn't writable!"
+        echo "${3:-ERROR}: The set $1 ($2) isn't writable!"
         return 1
     fi
 }
 
 function verify_tmpdir() {
     if [ ! -d "$2" ] && ! mkdir -p "$2"; then
-        echo "ERROR: The specified $1 ($2) isn't writable or creatable!"
+        echo "${3:-ERROR}: The set $1 ($2) isn't writable or creatable!"
         return 1
     fi
+
     verify_writable "$@" || return 1
 }

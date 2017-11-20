@@ -59,7 +59,7 @@ elif [[ ! "${splash_right_all[@]} " =~ "$splash_R " ]] ; then
     echo "ERROR: Invalid choice for right splash component." ; exit 1
 fi
 
-if ! verify_exists "art folder" "$art_dir" ; then
+if ! verify_exists "art folder" "$art_dir" INFO ; then
     if [ x$no_download == xtrue ] ; then
         echo "You said not to download the art zip, so exiting."
         exit 1

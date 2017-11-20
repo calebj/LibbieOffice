@@ -1,7 +1,7 @@
 #maintainer Caleb Johnson <me@calebj.io>
 pkgname=libbieoffice-fresh
-_parentRel=2
 _parentVer=5.4.3
+_parentRel=2
 pkgver=${_parentVer}.${_parentRel}
 pkgrel=2
 arch=('x86_64')
@@ -53,8 +53,8 @@ source=("https://mirror.pkgbuild.com/extra/os/x86_64/libreoffice-fresh-${_parent
         
 sha256sums=('b396ade7adb018cdcbdb2bae28e6ed45f3cab605f2529cd90be6c59583bf0a67'
             '7fadb2620f60da35a5d1eaf95f03e12676c268433f9f41ae2666ed9a885b6dd9'
-            'f7fdd3f5d6fc789a2815c9f35dd0ea1fce260151e6a1ba1a682b6b46a8b1536b'
-            '348c3d61b1711b86970a3c30cc81cf6321d231eb7546cf79b00b6029679baac2'
+            'a9e17ccc7f83748eb24429a7a0e6ce358421f8b9969fb5273515c96e3a3befd7'
+            '1e9fe9fbccc1b9bf33f2fd3bddb6a26539925e93a1c0b3606d2b8bc75a74415e'
             '48a57315bc84aaeb93d8e7dd64e1ec2eae0266c0b67a789450df49e6428fdcf4'
             '755e52dead2fa612f99aa2d109ce45f96fc6dacff1ace2dabb03c896f7a402e0'
             '3886927b5032bccbbe3359ed7e7a520089847c8e0e0d378e2c2923174afb1d33'
