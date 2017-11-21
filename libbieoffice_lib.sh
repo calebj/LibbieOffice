@@ -14,7 +14,7 @@ zip_md5=bfa18271cf413c17db04c1b775ed3571
 # defaults
 def_art=TMPDIR/${zip_filename%_full.zip}
 def_install=/
-def_tmp=/tmp/libbieoffice_mod/
+def_tmp=/tmp/libbieoffice_mod
 tmpdir="$def_tmp"
 installdir="$def_install"
 art_dir="$tmpdir/${zip_filename%_full.zip}"
