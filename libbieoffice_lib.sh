@@ -63,18 +63,19 @@ function find_original() {
 }
 
 function download_zip() {
-    verify_tmpdir "temp folder" "$tmpdir"
+    verify_tmpdir "temp folder" "$tmpdir" || return 1
 
     if [ -e "$tmpdir/$zip_filename" ] && \
        [[ "$(md5sum < "$tmpdir/$zip_filename")" =~ $zip_md5 ]]; then
        echo "Zip already downladed."
     else
         echo "Downloading art zip from dropbox..."
-        wget -c -nv --show-progress "$zip_download" -O "$tmpdir/$zip_filename"
+        wget -c -nv --show-progress "$zip_download" \
+             -O "$tmpdir/$zip_filename" || return 1
     fi
 
     echo "Extracting..."
-    unzip -oqd "$tmpdir" "$tmpdir/$zip_filename"
+    unzip -oqd "$tmpdir" "$tmpdir/$zip_filename" || return 1
     art_dir="$tmpdir/${zip_filename%_full.zip}"
 }
 
@@ -368,4 +369,11 @@ function verify_tmpdir() {
     fi
 
     verify_writable "$@" || return 1
+}
+
+function verify_command() {
+    if ! [ -x "$(command -v "$1")" ]; then
+        echo "ERROR: ${2:-$1} is not installed.  Please install it." >&2
+        return 1
+    fi
 }

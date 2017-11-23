@@ -40,7 +40,7 @@ while getopts o:t:a:fb:r:L:R:lh flag; do
   esac
 done
 
-if [ $tmpdir_set -a ! $artdir_set ] ; then
+if [ xtrue == x$tmpdir_set -a ! xtrue == x$artdir_set ] ; then
     art_dir="$tmpdir/${zip_filename%_full.zip}"
 fi
 
@@ -53,6 +53,8 @@ if [ "$backup" ] ; then backup_files "$backup" ; exit $? ; fi
 verify_writable "installation root" "$installdir" || exit 1
 if [ "$restore" ] ; then restore_files "$restore" ; exit $? ; fi
 
+verify_command convert imagemagick || exit 1
+
 if [[ ! "${splash_left_parts[@]} " =~ "$splash_L " ]]; then
     echo "ERROR: Invalid choice for left splash component." ; exit 1
 elif [[ ! "${splash_right_all[@]} " =~ "$splash_R " ]] ; then
@@ -64,7 +66,7 @@ if ! verify_exists "art folder" "$art_dir" INFO ; then
         echo "You said not to download the art zip, so exiting."
         exit 1
     else
-         download_zip
+         download_zip || exit 1
     fi
 fi
 

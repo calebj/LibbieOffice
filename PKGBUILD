@@ -1,9 +1,9 @@
 #maintainer Caleb Johnson <me@calebj.io>
 pkgname=libbieoffice-fresh
 _parentVer=5.4.3
-_parentRel=2
+_parentRel=3
 pkgver=${_parentVer}.${_parentRel}
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 license=('LGPL3')
 url="http://www.libreoffice.org/"
@@ -51,10 +51,10 @@ source=("https://mirror.pkgbuild.com/extra/os/x86_64/libreoffice-fresh-${_parent
         "right_5.png"
         "right_blank.png")
         
-sha256sums=('b396ade7adb018cdcbdb2bae28e6ed45f3cab605f2529cd90be6c59583bf0a67'
+sha256sums=('b80b3e931facc5f51d2bf0ec9c90c0b9494baef785160364e30a9bd0901a458c'
             '7fadb2620f60da35a5d1eaf95f03e12676c268433f9f41ae2666ed9a885b6dd9'
-            'a9e17ccc7f83748eb24429a7a0e6ce358421f8b9969fb5273515c96e3a3befd7'
-            '1e9fe9fbccc1b9bf33f2fd3bddb6a26539925e93a1c0b3606d2b8bc75a74415e'
+            '2aff6e7dcd094e1d70242d07c049dc4309f8705cfea036cf2928f0c5f44e1f24'
+            '70285028d4740e1bd8afb11fc1363b1f0350af69430923cc66e45460a31766c6'
             '48a57315bc84aaeb93d8e7dd64e1ec2eae0266c0b67a789450df49e6428fdcf4'
             '755e52dead2fa612f99aa2d109ce45f96fc6dacff1ace2dabb03c896f7a402e0'
             '3886927b5032bccbbe3359ed7e7a520089847c8e0e0d378e2c2923174afb1d33'

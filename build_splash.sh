@@ -20,7 +20,7 @@ function usage() {
          "-h : Displays this help message."
 }
 
-while getopts o:a:L:R:lh flag; do
+while getopts o:t:a:L:R:lh flag; do
   case "$flag" in
     o) output="$OPTARG";;
     t) tmpdir="$OPTARG" ; tmpdir_set=true;;
@@ -37,18 +37,20 @@ if [ $tmpdir_set -a ! $artdir_set ] ; then
     art_dir="$tmpdir/${zip_filename%_full.zip}"
 fi
 
+verify_command convert imagemagick || exit 1
+
 if [[ ! "${splash_left_parts[@]} " =~ "$splash_L " ]]; then
     echo "ERROR: Invalid choice for left splash component." ; exit 1
 elif [[ ! "${splash_right_all[@]} " =~ "$splash_R " ]] ; then
     echo "ERROR: Invalid choice for right splash component." ; exit 1
 fi
 
-if ! verify_exists "art folder" "$art_dir" ; then
+if ! verify_exists "art folder" "$art_dir" INFO ; then
     if [ x$no_download == xtrue ] ; then
         echo "You said not to download the art zip, so exiting."
         exit 1
     else
-         download_zip
+         download_zip || exit 1
     fi
 fi
 

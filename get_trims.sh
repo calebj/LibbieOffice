@@ -3,11 +3,13 @@
 SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
 . "$SCRIPTPATH/libbieoffice_lib.sh"
 
+verify_command convert imagemagick || exit 1
+
 out_dir=./trimmed
 mkdir -p trimmed
 mkdir -p "$out_dir/"{autotrim,squarefill,crop}"/full"
 
-download_zip
+download_zip || exit 1
 
 for orig in "$art_dir/20170826_tysontan_libbie_001_color_"*.png ; do
     out="${orig##*_}"
