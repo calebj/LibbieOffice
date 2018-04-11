@@ -120,9 +120,6 @@ for mode in color blackwhite ; do
 done
 
 cp "$tmpdir/intro.png" "$installdir/usr/lib/libreoffice/program/intro.png"
-if [ $? -ne 0 ] ; then
-    cp "$tmpdir/intro.png" "$installdir/usr/lib64/libreoffice/program/intro.png"
-fi
 
 install_icon_group color ${color_themes[@]}
 install_icon_group blackwhite ${blackwhite_themes[@]}
