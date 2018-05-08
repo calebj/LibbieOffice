@@ -92,6 +92,13 @@ function generate_icon() {
     out="${icon_name}.png"
     orig="$(find_original $mode $icon_name)"
 
+    bgk=alpha
+    ver=$(convert -version | grep Version | cut -f3 -d' ' | cut -f1 -d-)
+    vercomp $ver 7.0.0
+    if [ $? == 2 ] ; then
+        bgk=matte
+    fi
+
     declare -a out_seq
     function set_output_seq() {
         out_seq=()
@@ -125,7 +132,7 @@ function generate_icon() {
                 info:))
         set_output_seq autotrim false ${trim_sizes[@]}
         autotrim_cmd=(-fill black -draw "rectangle ${coords[3]} ${coords[1]}"
-                      -fill none -fuzz 10% -draw "matte ${coords[2]} floodfill"
+                      -fill none -fuzz 10% -draw "$bgk ${coords[2]} floodfill"
                       -trim -gravity center -background none "${out_seq[@]}")
 
         if [ "$squarefill" == true ] ; then
@@ -376,4 +383,36 @@ function verify_command() {
         echo "ERROR: ${2:-$1} is not installed.  Please install it." >&2
         return 1
     fi
+}
+
+# https://stackoverflow.com/a/4025065
+function vercomp() {
+    if [[ $1 == $2 ]]
+    then
+        return 0
+    fi
+    local IFS=.
+    local i ver1=($1) ver2=($2)
+    # fill empty fields in ver1 with zeros
+    for ((i=${#ver1[@]}; i<${#ver2[@]}; i++))
+    do
+        ver1[i]=0
+    done
+    for ((i=0; i<${#ver1[@]}; i++))
+    do
+        if [[ -z ${ver2[i]} ]]
+        then
+            # fill empty fields in ver2 with zeros
+            ver2[i]=0
+        fi
+        if ((10#${ver1[i]} > 10#${ver2[i]}))
+        then
+            return 1
+        fi
+        if ((10#${ver1[i]} < 10#${ver2[i]}))
+        then
+            return 2
+        fi
+    done
+    return 0
 }
