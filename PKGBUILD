@@ -43,7 +43,7 @@ provides=('libreoffice' 'libreoffice-en-US')
 conflicts=('libreoffice-still' 'libreoffice-fresh')
 
 source=("https://mirror.pkgbuild.com/extra/os/x86_64/libreoffice-fresh-${_parentVer}-${_parentRel}-x86_64.pkg.tar.xz"
-        "20170826_tysontan_libbie.zip::https://www.dropbox.com/s/77r848yux6oof8g/20170826_tysontan_libbie_full.zip?dl=0"
+        "20170826_tysontan_libbie.zip::https://ia601504.us.archive.org/view_archive.php?archive=/17/items/20170826-tysontan-libbie-full/20170826_tysontan_libbie_full.zip"
         "libbieoffice_mod.sh"
         "libbieoffice_lib.sh"
         "left_libbie.png"
