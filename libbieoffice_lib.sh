@@ -7,7 +7,7 @@ if ((BASH_VERSINFO[0] < 4)); then
     exit 1
 fi
 
-zip_download="https://www.dropbox.com/s/77r848yux6oof8g/20170826_tysontan_libbie_full.zip?dl=1"
+zip_download="https://archive.org/download/20170826-tysontan-libbie-full/20170826_tysontan_libbie_full.zip"
 zip_filename=20170826_tysontan_libbie_full.zip
 zip_md5=bfa18271cf413c17db04c1b775ed3571
 
